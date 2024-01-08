@@ -10,12 +10,6 @@ const userSchema = new mongoose.Schema({
     lastName: {
         type : String 
     },
-    profile : {
-        type : Object 
-    },
-    listLinks : {
-        type : [Object]
-    },
     email : {
         type : String
     },

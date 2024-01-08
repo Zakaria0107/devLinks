@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const {signIn  , signUp, forgetPassword , resetPassword , getUser , signOut } = require('./../controllers/userController')
-const {userById} = require('./../controllers/userController')
+const {signIn  , signUp, forgetPassword , resetPassword , getUser , signOut } = require('../controllers/userController')
+const {userById} = require('../controllers/userController')
 const {SignInValidator , SignUpValidator } = require('./../middleware/formValidator')
 const {checkAuth} = require('./../middleware/isAuth') 
 

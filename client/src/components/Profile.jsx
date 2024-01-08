@@ -14,7 +14,7 @@ const Profile = () => {
             </div>
             <p className='text-[#737373] text-sm'>Image must be below 1024x1024px. Use PNG or JPG format.</p>
         </div>
-        <div className='w-full  rounded-lg bg-[#fafafa] py-5 px-4 '>
+        <div className='w-full  rounded-lg bg-[#fafafa] py-5 px-4 mb-6 '>
             <div className='mb-4'>
                 <p className='text-[#737373]'>First name*</p>
             </div>
@@ -24,6 +24,12 @@ const Profile = () => {
             <div>
                 <p className='text-[#737373]'>Email</p>
             </div>
+        </div>
+        <hr/>
+        <div className='flex justify-end'>
+            <button className={`bg-[#633cff] text-white text-md rounded-lg py-2 px-6 font-semibold mt-4`}>
+                Save
+            </button>
         </div>
     </div>
   )

@@ -5,13 +5,13 @@ const bcrypt = require("bcrypt")
 const { v4: uuidv4 } = require('uuid')
 
 exports.signUp = async (req , res) => {
-    const {name, email , password , passwordRep} = req.body
+    const {email , password , passwordRep} = req.body
     if(password != passwordRep)
         return res.status(400).json({err : "Passwords not match"})
     try {
         const salt = await bcrypt.genSalt(10);
         const hashed = await bcrypt.hash(req.body.password, salt);
-        const user = new User({id : uuidv4() ,  name , email , password :  hashed })
+        const user = new User({id : uuidv4() ,email , password :  hashed })
         user.save((err , data) => {
             if(err)
                 return res.status(400).json({err : err }) 
@@ -35,7 +35,6 @@ exports.signIn = async (req ,  res) => {
                 return res.status(401).json({err: "Wrong password"})
             }
 
-            
             const token = jwt.sign({_id: user._id, exp: Math.floor(Date.now() / 1000) + (15 * 24* 60 * 60)}, process.env.JWT_SECRET, { algorithm: 'HS256' }); 
            
             const {_id  , userName , fullName  } = user;
