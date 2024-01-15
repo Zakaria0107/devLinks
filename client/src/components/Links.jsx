@@ -88,8 +88,8 @@ const Links = ({listLinks , setListlink}) => {
                           platforms.map((elt1 , index) =>{ 
                             const platformIcon = elt1.toLowerCase().replace(' ', '').replace('.', '')
                             return( 
-                            <button className='w-full border-b border-solid text-[#333] hover:text-[#633cff] text-left py-4 flex justify-start items-center gap-3' onClick={() => selectPlatform(elt1 , elt.id)}>
-                                <img src={`/icons/select-icons/icon-${platformIcon}.svg`}  />
+                            <button className='w-full border-b border-solid text-[#333]  hover:text-[#633cff] text-left py-4 flex justify-start items-center gap-3' onClick={() => selectPlatform(elt1 , elt.id)}>
+                                <img src={`/icons/select-icons/icon-${platformIcon}.svg`}/>
                                 {elt1}
                               </button>)
                           })

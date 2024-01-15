@@ -32,7 +32,7 @@ const [email , setEmail] = useState('')
                     <img
                     src={imageURL}
                     alt="Selected"
-                    className="absolute w-full h-full "
+                    className="absolute w-full h-full object-cover "
                     />
                 )}
             </div>
