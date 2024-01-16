@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 const NavBar = ({activeSection ,setActiveSection}) => {
   const nav = useNavigate()
   const handlePreviewLink = () => {
-    nav('/preview')
+    let _id = JSON.parse(localStorage.user)._id
+    nav(`/preview?userId=${_id}`)
   }
   return (
     <div className='w-full md:w-[90%] mx-auto bg-white md:rounded-lg px-6 py-4 flex justify-between items-center'>

@@ -35,7 +35,7 @@ const SignIn = ({switchComponent , setSwitch}) => {
         })
     }
   return (
-    <div className='shadow-xl w-full sm:w-[476px]  rounded-xl py-8 sm:py-12 px-4 sm:px-10 bg-white '>
+    <div className='shadow-xl w-[98%] sm:w-[476px]  rounded-xl py-8 sm:py-12 px-4 sm:px-10 bg-white '>
         <h1 className='text-3xl font-bold'>Login</h1>
         <p className='text-[#737373] mt-4'>Add your details below to get back into the app</p>
         <div className='mb-6 mt-8'>

@@ -5,6 +5,7 @@ const {userById} = require('../controllers/loginController')
 const {SignInValidator , SignUpValidator } = require('./../middleware/formValidator')
 const {checkAuth} = require('./../middleware/isAuth') 
 
+router.get("/:Uid/preview" , getUser )
 router.get("/:Uid" ,checkAuth ,  getUser )
 router.post("/signIn" ,SignInValidator ,  signIn)
 router.post("/signUp" ,SignUpValidator ,  signUp)

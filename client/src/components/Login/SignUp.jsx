@@ -9,9 +9,9 @@ const SignUp = ({switchComponent , setSwitch}) => {
 
     const signUp = () => {
         axios.post(`${process.env.REACT_APP_API_URL}/user/signUp` , {
-            email : email , 
-            password : password , 
-            passwordRep , passwordRep
+            email, 
+            password, 
+            passwordRep 
         })
         .then(res => {
             Swal.fire({
@@ -34,7 +34,7 @@ const SignUp = ({switchComponent , setSwitch}) => {
         })
     }
   return (
-    <div className='shadow-xl w-full sm:w-[476px] rounded-xl py-8 sm:py-12 px-4 sm:px-10 bg-white '>
+    <div className='shadow-xl w-[98%] sm:w-[476px] rounded-xl py-8 sm:py-12 px-4 sm:px-10 bg-white '>
             <h1 className='text-3xl font-bold'>Create account</h1>
             <p className='text-[#737373] mt-4'>Let's get you started sharing your links!</p>
             <div className='mb-4 mt-8'>

@@ -25,7 +25,7 @@ const Links = ({listLinks , setListlink , getUser}) => {
 
   const selectPlatform = (elt , index) => {
     const newList = listLinks.map(element => {
-      if(element.id != index)
+      if(element.id !== index)
         return {...element}
       else 
         return {...element , platform : elt}
@@ -35,7 +35,7 @@ const Links = ({listLinks , setListlink , getUser}) => {
   }
   const setLink = (e , index) => {
     const newList = listLinks.map(element => {
-      if(element.id != index)
+      if(element.id !== index)
         return {...element}
       else 
         return {...element , link : e.target.value}
@@ -110,8 +110,8 @@ const Links = ({listLinks , setListlink , getUser}) => {
                           platforms.map((elt1 , index) =>{ 
                             const platformIcon = elt1.toLowerCase().replace(' ', '').replace('.', '')
                             return( 
-                            <button className='w-full border-b border-solid text-[#333]  hover:text-[#633cff] text-left py-4 flex justify-start items-center gap-3' onClick={() => selectPlatform(elt1 , elt.id)}>
-                                <img src={`/icons/select-icons/icon-${platformIcon}.svg`}/>
+                            <button className='w-full border-b border-solid text-[#333]  hover:text-[#633cff] text-left py-4 flex justify-start items-center gap-3' onClick={() => selectPlatform(elt1 , elt.id)} key={index}>
+                                <img src={`/icons/select-icons/icon-${platformIcon}.svg`} alt={elt1}/>
                                 {elt1}
                               </button>)
                           })
