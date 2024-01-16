@@ -26,3 +26,62 @@
 
 
 
+.github {
+    background-color: #1A1A1A;
+}
+
+.youtube {
+    background-color: #EE3939
+}
+
+.linkedin{
+    background-color: #2D68FF;
+}
+
+.facebook{
+    background-color: #2442AC;
+}
+
+.frontendmentor{
+    background-color: #FFFFFF;
+    color: #333;
+    border: 1px solid #D9D9D9;
+}
+
+.twitter{
+    background-color: #43B7E9;
+}
+
+.twitch{
+    background-color: #EE3FC8;
+}
+
+.devto{
+    background-color: #333333
+}
+
+.codewars{
+    background-color: #8A1A50;
+}
+
+.freecodecamp{
+    background-color: #302267;
+}
+
+.gitlab{
+    background-color: #EB4925;
+}
+
+.hashnode{
+    background-color: #0330D1;
+}
+
+.stackoverflow{
+    background-color: #EC7100;
+}
+
+.codepen{
+    background-color: rgb(70, 70, 70);
+}
+
+

@@ -31,9 +31,9 @@ const MobilePreview = ({user}) => {
                     user.listLinks && user.listLinks.map(elt => {
                         const platformIcon = elt.platform.toLowerCase().replace(' ', '').replace('.', '')
                         return (
-                            <div className='bg-black text-white flex  justify-between items-center rounded-lg h-[46px] px-[16px] border-2 border-solid border-[#D9D9D9]'>
+                            <div className={`${platformIcon} text-white flex  justify-between items-center rounded-lg h-[46px] px-[16px] border-1 border-solid border-[#D9D9D9]`}>
                                 <div className='flex gap-2 items-center'>
-                                    <img src={`/icons/select-icons/icon-${platformIcon}.svg`} className='!fill-white'  />
+                                    <img src={`/icons/select-icons/icon-${platformIcon}.svg`} />
                                     {elt.platform}
                                 </div>
                                 <img src={'/icons/icon-arrow-right.svg'} />
