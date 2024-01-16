@@ -4,23 +4,30 @@ const {redisClient} = require('../connections/redis')
 const bcrypt = require("bcrypt")
 const { v4: uuidv4 } = require('uuid')
 
-exports.signUp = async (req , res) => {
+exports.signUp = (req , res) => {
     const {email , password , passwordRep} = req.body
     if(password != passwordRep)
         return res.status(400).json({err : "Passwords not match"})
-    try {
-        const salt = await bcrypt.genSalt(10);
-        const hashed = await bcrypt.hash(req.body.password, salt);
-        const user = new User({id : uuidv4() ,email , password :  hashed })
-        user.save((err , data) => {
-            if(err)
-                return res.status(400).json({err : err }) 
-            res.send(true)
-        })
-    }catch(err){
-        return res.status(400).json({err : err })
-    }
+    let query = User.findOne({email : email })
+    query.exec(async (err , data) => {
+        if(data)
+            return res.status(400).json({err: "Email already exist"})
+        try {
+                const salt = await bcrypt.genSalt(10);
+                const hashed = await bcrypt.hash(req.body.password, salt);
+                const user = new User({id : uuidv4() ,email , password :  hashed })
+                user.save((err , data) => {
+                    if(err)
+                        return res.status(400).json({err : err }) 
+                    res.send(true)
+                })
+        }catch(err){
+                return res.status(400).json({err : err })
+        }
+    })
 }
+
+
 
 
 exports.signIn = async (req ,  res) => {

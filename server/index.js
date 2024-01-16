@@ -24,9 +24,11 @@ app.use(expressValidator())
 
 //Routes 
 const userRouter = require("./routes/user")
+const infoRouter = require("./routes/information")
 
-
+app.use('/UPLOADS', express.static('./UPLOADS'));
 app.use('/api/user' , userRouter)
+app.use('/api/information' , infoRouter)
 
 
 

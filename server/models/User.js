@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     lastName: {
         type : String 
     },
-    profile : {
+    profileImage : {
         type : Object 
     },
     listLinks : {
