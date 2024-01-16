@@ -5,9 +5,7 @@ import { FaChevronDown } from "react-icons/fa";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 const Links = ({listLinks , setListlink , getUser}) => {
-
   const [openLinks, setOpenLinks] = useState({})
-  const [selectedPlatform , setSelectedPlatform] = useState('')
   const platforms = [
     "Github",
     "Frontend Mentor",
@@ -24,10 +22,6 @@ const Links = ({listLinks , setListlink , getUser}) => {
     "Hashnode",
     "Stack Overflow"
   ]
-
-  const save = () => {
-    console.log(listLinks)
-  }
 
   const selectPlatform = (elt , index) => {
     const newList = listLinks.map(element => {

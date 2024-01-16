@@ -1,23 +1,6 @@
-import React , {useState} from 'react'
+import React from 'react'
 
 const MobilePreview = ({user}) => {
-    const [open, setOpen] = useState(false);
-    const platforms = [
-        "Github",
-        "Frontend Mentor",
-        "Twitter",
-        "LinkedIn",
-        "YouTube",
-        "Facebook",
-        "Twitch",
-        "Dev.to",
-        "Codewars",
-        "Codepen",
-        "freeCodeCamp",
-        "GitLab",
-        "Hashnode",
-        "Stack Overflow"
-    ]
   
   return (
     <div className="hidden lg:flex justify-center items-center col-span-2 bg-white min-h-screen rounded-lg h-[834px] ">

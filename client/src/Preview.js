@@ -38,9 +38,10 @@ const Preview = () => {
         </div>
         <div className='absolute sm:top-48  left-1/2 -translate-x-1/2  flex justify-center items-center flex-col rounded-2xl w-[95%] h-[95%] sm:h-auto sm:w-[349px] shadow-xl bg-white py-8'>
             {user?.profileImage?.path && <img src={`http://localhost:5000/${user?.profileImage?.path}`} alt='avatar' className='w-[96px] h-[96px] rounded-full border-4 border-solid border-[#633CFF]' />}
-            {(user.firstName || user.lastName) && <h3 className='text-lg font-semibold text-[#333] w-[80%] text-center bg-white mt-4 '>{user.firstName} {user.lastName}</h3>}
-            {user.email && <p className='text-[#333] text-sm text-center w-[80%] bg-white '>{user.email}</p>}
-            <div className='w-[237px] flex flex-col gap-4 mt-8 ' >  
+            {!user?.profileImage?.path && <img src="/images/placeholder-image.png" alt='avatar' className='w-[96px] h-[96px] rounded-full border-4 border-solid border-[#633CFF]' />}
+            <h3 className='text-lg font-semibold text-[#333] w-[80%] text-center bg-white mt-4 '>{user.firstName} {user.lastName}</h3>
+            <p className='text-[#333] text-sm text-center w-[80%] bg-white '>{user.email}</p>
+            <div className='w-[80%] sm:w-[237px] flex flex-col gap-4 mt-8 ' >  
                 {
                     user.listLinks && user.listLinks.map(elt => {
                         const platformIcon = elt.platform.toLowerCase().replace(' ', '').replace('.', '')
