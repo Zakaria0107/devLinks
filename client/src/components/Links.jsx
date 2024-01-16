@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { IoMdAdd } from "react-icons/io";
 import { LuEqual } from "react-icons/lu";
 import { FaChevronDown } from "react-icons/fa";
-
-const Links = ({listLinks , setListlink}) => {
+import axios from 'axios';
+import Swal from 'sweetalert2';
+const Links = ({listLinks , setListlink , getUser}) => {
 
   const [openLinks, setOpenLinks] = useState({})
   const [selectedPlatform , setSelectedPlatform] = useState('')
@@ -65,6 +66,33 @@ const Links = ({listLinks , setListlink}) => {
   };
 
 
+  const changeLinks = () => {
+    let userId = JSON.parse(localStorage.user)._id
+    let token = JSON.parse(localStorage.user).token
+    axios.post(`${process.env.REACT_APP_API_URL}/information/${userId}/updateLinks`, {listLinks}  ,
+    { headers: {'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+    }} )
+    .then(res => {
+      getUser()
+        Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: '',
+        showConfirmButton: false,
+        timer: 1000
+        })  
+    })
+    .catch(err =>{
+        Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: err.response.data.err,
+        showConfirmButton: false,
+        timer: 1000
+        })
+    })
+  }
 
   return (
     <div className="col-span-5 lg:col-span-3 bg-white min-h-screen rounded-lg py-14 px-8">
@@ -105,7 +133,7 @@ const Links = ({listLinks , setListlink}) => {
             
         <hr/>
         <div className='flex justify-end'>
-            <button className={`bg-[#633cff] text-white text-md rounded-lg py-2 px-6 font-semibold mt-4`} onClick={save}>
+            <button className={`bg-[#633cff] text-white text-md rounded-lg py-2 px-6 font-semibold mt-4`} onClick={() => changeLinks()}>
                 Save
             </button>
         </div>

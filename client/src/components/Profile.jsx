@@ -1,24 +1,61 @@
 import React , {useRef , useState} from 'react'
 import { IoMdAdd } from "react-icons/io";
 import { GrGallery } from "react-icons/gr";
-
-const Profile = () => {
+import axios from 'axios';
+import Swal from 'sweetalert2';
+const Profile = ({userFirstName, userLastName, userEmail , getUser }) => {
     const inputRef = useRef(null)
-  const [imageURL, setImageURL] = useState(null)
-const [imageSelected , setImageSelected] = useState(null)
-const [firstName , setFristName] = useState('')
-const [lastName , setLastName] = useState('')
-const [email , setEmail] = useState('')
+    const [imageURL, setImageURL] = useState(null)
+    const [imageSelected , setImageSelected] = useState()
+    const [firstName , setFristName] = useState(userFirstName)
+    const [lastName , setLastName] = useState(userLastName)
+    const [email , setEmail] = useState(userEmail)
     const selectImage = () => {
         inputRef.current.click()
-      }
+    }
     
     const handleImageChange = (e) => {
         const selectedImage = e.target.files[0]
         setImageSelected(selectedImage)
         const imagePreview = URL.createObjectURL(selectedImage)
         setImageURL(imagePreview)
-      }
+    }
+
+    const changeInfo = () => {
+        let userId = JSON.parse(localStorage.user)._id
+        let token = JSON.parse(localStorage.user).token
+        let formData = new FormData()
+        formData.append("firstName", firstName)
+        formData.append("lastName", lastName)
+        formData.append("email", email)
+        if (imageSelected !== undefined) {
+            formData.append('profileImage', imageSelected)
+        }
+      
+        axios.post(`${process.env.REACT_APP_API_URL}/information/${userId}/updateInfo`, formData  ,
+        { headers: {'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`
+        }} )
+        .then(res => {
+            getUser()
+            Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: '',
+            showConfirmButton: false,
+            timer: 1000
+            })  
+        })
+        .catch(err =>{
+            Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.err,
+            showConfirmButton: false,
+            timer: 1000
+            })
+        })
+    }
   return (
     <div className="col-span-5 lg:col-span-3 bg-white min-h-screen rounded-lg py-14 px-8">
         <h1 className='text-3xl font-bold'>Profile Details</h1>
@@ -61,7 +98,7 @@ const [email , setEmail] = useState('')
         </div>
         <hr/>
         <div className='flex justify-end'>
-            <button className={`bg-[#633cff] text-white text-md rounded-lg py-2 px-6 font-semibold mt-4`}>
+            <button className={`bg-[#633cff] text-white text-md rounded-lg py-2 px-6 font-semibold mt-4`} onClick={() => changeInfo()}>
                 Save
             </button>
         </div>
